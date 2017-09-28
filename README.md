@@ -48,7 +48,7 @@ NOTE: If a line has the search text more than once, the line should be included 
 #### steps
 - download <code>https://github.com/robmurray/mtsearch/blob/master/bin/mtsearch.tar.gz</code>
 - from the console change to the download directory and run <code>$ tar -xzf mtsearch.tar.gz </code> 
-- execute <code>$ java -jar mtsearch.jar </code>
+- execute <code>$ java -jar mtsearch-1.0-SNAPSHOT.jar </code>
 
 ### From Manual BUILD
 
