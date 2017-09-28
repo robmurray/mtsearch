@@ -62,11 +62,12 @@ NOTE: If a line has the search text more than once, the line should be included 
 - from the console clone the project to a development environment. 
 e.g. 
 <code>$git clone https://github.com/robmurray/mtsearch.git </code>
-- change directories to the project root
+- change directories to the project root 
+    <code>$ cd mtsearch </code>
 - do a full build
- <code>$ mvn clean install</code>
+    <code>$ mvn clean install</code>
 - run the application 
-<code> $ mvn spring-boot:run</code>
+    <code> $ mvn spring-boot:run</code>
 
 
 ## Accessing the Application

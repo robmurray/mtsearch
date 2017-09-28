@@ -64,7 +64,7 @@ public class SearchRESTController {
     )
     @RequestMapping(path="/search", method = RequestMethod.GET)
     public @ResponseBody
-    SearchResponse search(@Size(max = 10, message = "max search text size is 100") @RequestParam(value = "text", required = true) String searchText) {
+    SearchResponse search(@Size(max = 100, message = "max search text size is 100") @RequestParam(value = "text", required = true) String searchText) {
         ProviderResult providerResult = null;
         try {
             if(LOG.isDebugEnabled()) {
