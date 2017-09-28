@@ -11,10 +11,10 @@ public class ServiceConfig {
 
     @Bean
     public SearchService searchService() throws SearchProviderException {
-        return new SearchService(niaveSearchProvider());
+        return new SearchService(simpleSearchProvider());
     }
     @Bean
-    public SimpleFileSearchProviderImpl niaveSearchProvider() throws SearchProviderException {
+    public SimpleFileSearchProviderImpl simpleSearchProvider() throws SearchProviderException {
         return new SimpleFileSearchProviderImpl("Programming_Data.txt");
     }
 }

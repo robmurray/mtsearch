@@ -1,10 +1,8 @@
 package com.mt.search.model;
 
 /**
- * . response should include the following -
- . Total count of search results
- . Time (in milliseconds) it took to search.
- . List of all the matching lines.
+ * Contains search results
+ *
  * Created by robertmurray on 9/27/17.
  */
 import java.util.List;

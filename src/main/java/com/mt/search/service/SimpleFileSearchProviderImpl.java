@@ -8,6 +8,7 @@ import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.FileSystemNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,6 +17,11 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 /**
+ * A very basic Search provider suitable for demostrative and POC purposes
+ *
+ * Attemps to load the data file from the classpath if that fails will load from
+ * the current directory
+ *
  * Created by robertmurray on 9/27/17.
  */
 public class SimpleFileSearchProviderImpl implements SearchProviderInterface {
@@ -37,6 +43,16 @@ public class SimpleFileSearchProviderImpl implements SearchProviderInterface {
             }
         } catch (URISyntaxException e) {
             throw new SearchProviderException("error accessing source file" ,e);
+        } catch (FileSystemNotFoundException e){
+            try {
+                // probably running the executable jar directly
+                // attempt to load the file from the current directory
+                LOG.info("unable to load from classpath. loading from current directory instead");
+                sourceFilePath = Paths.get(sourceFile);
+            }catch (Exception e2){
+                throw new SearchProviderException("error accessing source file" ,e2);
+            }
+
         }
     }
 
@@ -51,7 +67,6 @@ public class SimpleFileSearchProviderImpl implements SearchProviderInterface {
             return null;
         }
 
-        StringBuilder data = new StringBuilder();
         ProviderResult pr = new ProviderResult();
 
         // needs to be effectively final to use in a stream
