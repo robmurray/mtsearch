@@ -46,9 +46,15 @@ NOTE: If a line has the search text more than once, the line should be included 
 - internet Connection
 - browser
 #### steps
-- download <code>https://github.com/robmurray/mtsearch/blob/master/bin/mtsearch.tar.gz</code>
-- from the console change to the download directory and run <code>$ tar -xzf mtsearch.tar.gz </code> 
-- execute <code>$ java -jar mtsearch-1.0-SNAPSHOT.jar </code>
+- download 
+
+  <code>https://github.com/robmurray/mtsearch/blob/master/bin/mtsearch.tar.gz</code>
+- from the console change to the download directory and run 
+
+  <code>$ tar -xzf mtsearch.tar.gz </code> 
+- execute 
+
+  <code>$ java -jar mtsearch-1.0-SNAPSHOT.jar </code>
 
 ### From Manual BUILD
 
@@ -60,21 +66,26 @@ NOTE: If a line has the search text more than once, the line should be included 
 
 #### steps
 - from the console clone the project to a development environment. 
-e.g. 
-<code>$git clone https://github.com/robmurray/mtsearch.git </code>
-- change directories to the project root 
-    <code>$ cd mtsearch </code>
+
+  <code>$git clone https://github.com/robmurray/mtsearch.git </code>
+- change directories to the project root
+ 
+   <code>$ cd mtsearch </code>
 - do a full build
+ 
     <code>$ mvn clean install</code>
 - run the application 
+    
     <code> $ mvn spring-boot:run</code>
 
 
 ## Accessing the Application
 - The swagger documentation can be found at 
-<code>http://localhost:8080/swagger-ui.html</code>
+
+  <code>http://localhost:8080/swagger-ui.html</code>
 - The exposed application URI is 
- <code>http://localhost:8080/search?text=test</code>
+
+  <code>http://localhost:8080/search?text=test</code>
  
 (note the queystring parameter "text" is required)
  
