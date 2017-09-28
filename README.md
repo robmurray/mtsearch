@@ -38,7 +38,7 @@ NOTE: If a line has the search text more than once, the line should be included 
 
 
 ## Running the application
-
+note - instructions are for macOS/linux. Path structures will need to be adjust for windows.
 ### From Binary
 
 #### prerequisites
