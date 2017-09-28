@@ -1,5 +1,5 @@
 # mtsearch
-springboot REST demo app
+springboot REST demo app for tech screening.
 
 ##Requirements
 Write a server application which supports a search API end-point, the search should be case-insensitive. (Imagine implementing GOOGLE search)
@@ -10,7 +10,7 @@ Write a server application which supports a search API end-point, the search sho
 
 **Output from the API end-point:**
 
- response should include the following:
+response should include the following:
   
 * Total count of search results
 
@@ -22,12 +22,13 @@ Write a server application which supports a search API end-point, the search sho
 NOTE: If a line has the search text more than once, the line should be included only once, however the Total count should include all the occurrences.
 
 **Output** 
+
 * in a standard format (XML, JSON) representation is preferable.              
                 
 * Implementation in your choice of programming language and web servers (tomcat, jetty, etc).
  
 * Data source is attached, it's a text file with 30 lines (movie plot from 2006 superman film, source is wikipedia).
-                . If you prefer to use a database, that's ok too. Please keep it simple to a single table, treat every line from the text file as a row in the table.
+  If you prefer to use a database, that's ok too. Please keep it simple to a single table, treat every line from the text file as a row in the table.
  
 **Deliverable** 
 
@@ -36,13 +37,36 @@ NOTE: If a line has the search text more than once, the line should be included 
 * Detailed instructions for running the application in a server.
 
 
-## Usage/Build
-### build
-<root project directory>$ mvn clean install
+## Running the application
 
-### RUN
-<root project directory>$ mvn spring-boot:run
+### From Binary
 
-### Swagger docs
-http://localhost:8080/swagger-ui.html
+
+### From Manual BUILD
+
+#### prerequisites
+- JDK1.8
+- Maven
+- internet Connection
+- git
+
+#### steps
+- from the console clone the project to a development environment. 
+e.g. 
+<code>$git clone https://github.com/robmurray/mtsearch.git </code>
+- change directories to the project root
+- do a full build
+ <code>$ mvn clean install</code>
+- run the application 
+<code> $ mvn spring-boot:run</code>
+
+
+##Accessing the Application
+- The swagger documentation can be found at 
+<code>http://localhost:8080/swagger-ui.html</code>
+- The exposed application URI is 
+ <code>http://localhost:8080/search?text=test</code>
+ 
+(note the queystring parameter "text" is required)
+ 
 

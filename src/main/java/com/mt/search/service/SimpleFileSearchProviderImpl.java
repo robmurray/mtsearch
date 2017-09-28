@@ -22,7 +22,6 @@ public class SimpleFileSearchProviderImpl implements SearchProviderInterface {
     static final Logger LOG = LoggerFactory.getLogger(SimpleFileSearchProviderImpl.class);
 
     private Path sourceFilePath;
-    private String sourceFile;
 
     public SimpleFileSearchProviderImpl(String sourceFile) throws SearchProviderException {
         if(sourceFile== null){
@@ -31,7 +30,6 @@ public class SimpleFileSearchProviderImpl implements SearchProviderInterface {
         if(LOG.isDebugEnabled()) {
             LOG.debug("source file:" + sourceFile);
         }
-        this.sourceFile=sourceFile;
         try {
             sourceFilePath = Paths.get(getClass().getClassLoader().getResource(sourceFile).toURI());
             if(LOG.isDebugEnabled()) {
