@@ -46,9 +46,9 @@ NOTE: If a line has the search text more than once, the line should be included 
 - internet Connection
 - browser
 #### steps
-- download <code>https://github.com/robmurray/mtsearch/blob/master/bin/mtsearch.jar</code>
-- download <code>https://github.com/robmurray/mtsearch/blob/master/bin/</code>
-- from the console change to the download directory and execute <code>$ java -jar mtsearch.jar </code>
+- download <code>https://github.com/robmurray/mtsearch/blob/master/bin/mtsearch.tar.gz</code>
+- from the console change to the download directory and run <code>$ tar -xzf mtsearch.tar.gz </code> 
+- execute <code>$ java -jar mtsearch.jar </code>
 
 ### From Manual BUILD
 

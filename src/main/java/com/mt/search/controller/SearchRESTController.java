@@ -15,12 +15,15 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +31,7 @@ import java.util.List;
  * Created by robertmurray on 9/27/17.
  */
 @Controller
+@Validated
 @RequestMapping("/")
 @Api(value="search", description="Case Insenstive Search API's")
 public class SearchRESTController {
@@ -60,7 +64,7 @@ public class SearchRESTController {
     )
     @RequestMapping(path="/search", method = RequestMethod.GET)
     public @ResponseBody
-    SearchResponse search(@RequestParam(value = "text", required = true) String searchText) {
+    SearchResponse search(@Size(max = 10, message = "max search text size is 100") @RequestParam(value = "text", required = true) String searchText) {
         ProviderResult providerResult = null;
         try {
             if(LOG.isDebugEnabled()) {
@@ -77,11 +81,19 @@ public class SearchRESTController {
     }
 
     @ExceptionHandler({MissingServletRequestParameterException.class})
-    public ResponseEntity<Object> handleConstraintViolation(MissingServletRequestParameterException ex, WebRequest request) {
+    public ResponseEntity<Object> handleMissingRequestParameterViolation(MissingServletRequestParameterException ex, WebRequest request) {
         List<String> errors = new ArrayList<String>();
         errors.add(ex.getMessage());
         RequestError error = new RequestError(HttpStatus.BAD_REQUEST, "Please provide the 'text' QueryString parameter. eg. localhost:8080/search?test=bob", errors);
         return new ResponseEntity<Object>(error, new HttpHeaders(), error.getStatus());
     }
+    @ExceptionHandler({ConstraintViolationException.class})
+    public ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException ex, WebRequest request) {
+        List<String> errors = new ArrayList<String>();
+        errors.add(ex.getMessage());
+        RequestError error = new RequestError(HttpStatus.BAD_REQUEST, "max search string size exceeded. must be less then 100", errors);
+        return new ResponseEntity<Object>(error, new HttpHeaders(), error.getStatus());
+    }
+
 
 }
